@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Miss Arnold’s Tutoring Table</title>
+  <meta name="description" content="Confidence-centered academic mentorship for grades 1–8 in Lexington, SC. Structured support, clear growth plans, and real parent partnership." />
+
+  <style>
+    :root{
+      /* Earthy / neutral palette */
+      --bg: #fbfaf7;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --line: #e7e2d9;
+      --sage: #5f7663;
+      --clay: #a07c63;
+      --shadow: 0 12px 30px rgba(17,24,39,.08);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    *{ box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 30% -10%, rgba(95,118,99,.12), transparent 60%),
+                  radial-gradient(900px 500px at 90% 0%, rgba(160,124,99,.10), transparent 55%),
+                  var(--bg);
+      line-height: 1.5;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+    /* Top bar */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(251,250,247,.75);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .brand strong{
+      font-size: 15px;
+      letter-spacing: .2px;
+    }
+    .brand span{
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .navlinks{
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .navlinks a{
+      font-size: 14px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    .navlinks a:hover{ background: rgba(95,118,99,.08); color: var(--text); }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: 0 6px 16px rgba(17,24,39,.06);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform .06s ease, box-shadow .15s ease;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 22px rgba(17,24,39,.10); }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--sage), #4e6b58);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 14px 30px rgba(95,118,99,.20);
+    }
+    .btn.primary:hover{ box-shadow: 0 18px 36px rgba(95,118,99,.28); }
+
+    /* Sections */
+    section{ padding: 64px 0; }
+    .hero{ padding: 74px 0 48px; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 26px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+      .navlinks{ display:none; }
+    }
+
+    .card{
+      background: rgba(255,255,255,.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    h1{
+      font-size: clamp(32px, 3.8vw, 46px);
+      letter-spacing: -0.6px;
+      line-height: 1.1;
+      margin: 0 0 12px;
+    }
+    .sub{
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 0 18px;
+      max-width: 60ch;
+    }
+    .pillrow{ display:flex; gap:10px; flex-wrap: wrap; margin-top: 18px; }
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.7);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .dot{ width: 8px; height: 8px; border-radius: 50%; background: var(--sage); display:inline-block; }
+
+    .kicker{
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 12px;
+      color: var(--sage);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    h2{
+      font-size: 26px;
+      letter-spacing: -0.3px;
+      margin: 0 0 10px;
+    }
+    p{ margin: 0 0 12px; color: var(--muted); }
+
+    .list{ margin: 14px 0 0; padding: 0; list-style: none; display:grid; gap: 10px; }
+    .list li{
+      display:flex; gap: 10px; align-items:flex-start;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+    .check{
+      width: 20px; height: 20px;
+      border-radius: 6px;
+      background: rgba(95,118,99,.14);
+      display:inline-flex; align-items:center; justify-content:center;
+      color: var(--sage);
+      font-weight: 900;
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    @media (max-width: 900px){
+      .steps{ grid-template-columns: 1fr; }
+    }
+    .step{
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .step strong{ display:block; margin-bottom: 6px; }
+    .step .num{
+      display:inline-flex;
+      width: 34px; height: 34px;
+      align-items:center; justify-content:center;
+      border-radius: 10px;
+      background: rgba(160,124,99,.14);
+      border: 1px solid rgba(160,124,99,.20);
+      color: var(--clay);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .plans{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+    @media (max-width: 900px){
+      .plans{ grid-template-columns: 1fr; }
+    }
+    .plan{
+      background: rgba(255,255,255,.9);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 10px 22px rgba(17,24,39,.06);
+    }
+    .plan h3{ margin: 0 0 6px; font-size: 18px; }
+    .price{ font-size: 22px; font-weight: 800; color: var(--text); margin: 6px 0 10px; }
+    .tag{
+      display:inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--sage);
+      background: rgba(95,118,99,.12);
+      border: 1px solid rgba(95,118,99,.18);
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    .small{ font-size: 13px; color: var(--muted); }
+
+    .divider{ height: 1px; background: var(--line); margin: 18px 0; }
+
+    footer{
+      padding: 28px 0 44px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">
+          <strong>Miss Arnold’s Tutoring Table</strong>
+          <span>Lexington, SC • Grades 1–8</span>
+        </div>
+
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#method">Method</a>
+          <a href="#how">How it works</a>
+          <a href="#plans">Plans</a>
+          <a href="#about">About</a>
+        </nav>
+
+        <a class="btn primary" href="PASTE_YOUR_BOOKING_LINK_HERE" target="_blank" rel="noopener">
+          Schedule Assessment
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Top section -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <div class="kicker">Confidence-centered academic mentorship</div>
+            <h1>Building Confident, Empowered Learners — One Step at a Time.</h1>
+            <p class="sub">
+              Personalized support for students in grades 1–8 in Lexington, SC.
+              Structured guidance, clear growth plans, and real partnership with parents.
+            </p>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px;">
+              <a class="btn primary" href="PASTE_YOUR_BOOKING_LINK_HERE" target="_blank" rel="noopener">Schedule Initial Assessment</a>
+              <a class="btn" href="#plans">View Mentorship Plans</a>
+            </div>
+
+            <div class="pillrow" aria-label="Highlights">
+              <span class="pill"><span class="dot"></span> Personalized Academic Growth Plans</span>
+              <span class="pill"><span class="dot"></span> Confidence-Based Progress Tracking</span>
+              <span class="pill"><span class="dot"></span> Clear Parent Communication</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="kicker">Start here</div>
+            <h2 style="margin-top:0;">Initial Confidence &amp; Skill Assessment</h2>
+            <p>
+              A structured starting point to identify strengths, skill gaps, and confidence patterns—
+              followed by a clear plan recommendation.
+            </p>
+            <div class="divider"></div>
+            <p class="small"><strong>Investment:</strong> $45 (one-time)</p>
+            <p class="small"><strong>Next step:</strong> Schedule your assessment and complete the intake form.</p>
+            <div style="margin-top: 14px;">
+              <a class="btn primary" href="PASTE_YOUR_BOOKING_LINK_HERE" target="_blank" rel="noopener">Book Assessment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Invitation -->
+    <section>
+      <div class="wrap">
+        <div class="card">
+          <h2>When School Feels Overwhelming, You Don’t Have to Navigate It Alone.</h2>
+          <p>
+            If homework has become stressful, confidence feels low, or your child simply needs structured academic support,
+            you are not alone.
+          </p>
+          <p>
+            Miss Arnold’s Tutoring Table partners with families to strengthen academic skills and rebuild confidence through
+            consistent, personalized mentorship.
+          </p>
+          <p>
+            The goal is not just academic improvement — it’s helping students believe in their ability to learn.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Method -->
+    <section id="method">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <div class="kicker">The Build &amp; Believe Method</div>
+            <h2>Strengthening Skills. Growing Confidence.</h2>
+            <p>
+              Academic growth and confidence develop together. This method combines personalized planning, structured mentorship,
+              and consistent progress tracking so students can become independent, empowered learners.
+            </p>
+          </div>
+
+          <div>
+            <ul class="list">
+              <li><span class="check">✓</span><span><strong>Personalized Academic Growth Plans</strong><br><span class="small">Clear goals, focused skill work, and a plan that fits your child.</span></span></li>
+              <li><span class="check">✓</span><span><strong>Confidence-Based Progress Tracking</strong><br><span class="small">Track both skill mastery and independence over time.</span></span></li>
+              <li><span class="check">✓</span><span><strong>Parent Partnership</strong><br><span class="small">Simple, consistent updates so you feel supported and informed.</span></span></li>
+              <li><span class="check">✓</span><span><strong>Calm, Supportive Learning Environment</strong><br><span class="small">Encouragement that builds resilience and self-trust.</span></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how">
+      <div class="wrap">
+        <div class="card">
+          <div class="kicker">Simple process</div>
+          <h2>How It Works</h2>
+          <div class="steps">
+            <div class="step">
+              <div class="num">1</div>
+              <strong>Schedule the Assessment</strong>
+              <div class="small">Choose a time that works for your family and complete the intake form.</div>
+            </div>
+            <div class="step">
+              <div class="num">2</div>
+              <strong>Get a Personalized Plan</strong>
+              <div class="small">You’ll receive clear goals and a plan recommendation based on your child’s needs.</div>
+            </div>
+            <div class="step">
+              <div class="num">3</div>
+              <strong>Select a Mentorship Plan</strong>
+              <div class="small">Pick Foundations, Momentum, or Intensive Growth for consistent support.</div>
+            </div>
+            <div class="step">
+              <div class="num">4</div>
+              <strong>Begin Weekly Mentorship</strong>
+              <div class="small">Structured sessions + progress tracking + parent updates.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn primary" href="PASTE_YOUR_BOOKING_LINK_HERE" target="_blank" rel="noopener">Schedule Initial Assessment</a>
+            <a class="btn" href="#plans">See Plans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plans -->
+    <section id="plans">
+      <div class="wrap">
+        <div class="kicker">Plans &amp; investment</div>
+        <h2>Mentorship Plans</h2>
+        <p class="sub">All plans include structured progress tracking and ongoing parent communication.</p>
+
+        <div class="plans">
+          <div class="plan">
+            <h3>Foundations</h3>
+            <div class="tag">Steady support</div>
+            <div class="price">$175<span class="small">/month</span></div>
+            <div class="small">1 weekly academic mentorship session</div>
+            <div class="divider"></div>
+            <div class="small">Best for students who need consistent support and confidence building.</div>
+          </div>
+
+          <div class="plan">
+            <h3>Momentum <span class="small">(Most Popular)</span></h3>
+            <div class="tag">Accelerated growth</div>
+            <div class="price">$325<span class="small">/month</span></div>
+            <div class="small">2 weekly academic mentorship sessions</div>
+            <div class="divider"></div>
+            <div class="small">Best for students rebuilding skills and confidence with consistent accountability.</div>
+          </div>
+
+          <div class="plan">
+            <h3>Intensive Growth</h3>
+            <div class="tag">High-touch support</div>
+            <div class="price">$525<span class="small">/month</span></div>
+            <div class="small">3 weekly academic mentorship sessions</div>
+            <div class="divider"></div>
+            <div class="small">Best for students needing structured, frequent support for steady progress.</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 14px;">
+          <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div>
+              <h3 style="margin:0 0 8px;">Initial Confidence &amp; Skill Assessment</h3>
+              <p class="small" style="margin:0;">
+                A structured starting point to identify strengths, skill gaps, and confidence patterns—followed by a clear plan recommendation.
+              </p>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px; justify-content:center;">
+              <div class="price" style="margin:0;">$45 <span class="small">one-time</span></div>
+              <a class="btn primary" href="PASTE_YOUR_BOOKING_LINK_HERE" target="_blank" rel="noopener">Book Assessment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="wrap">
+        <div class="card">
+          <div class="kicker">About</div>
+          <h2>About Miss Arnold</h2>
+          <p>
+            I believe students grow best when they feel supported, capable, and understood.
+            My work focuses on strengthening academic foundations while building confidence and independence.
+          </p>
+          <p>
+            With experience supporting students in grades 1–8, I partner closely with parents to create steady progress through
+            structured mentorship, clear planning, and consistent communication.
+          </p>
+          <div class="divider"></div>
+          <p class="small">
+            <strong>Miss Arnold’s Tutoring Table</strong> • Lexington, SC • Grades 1–8
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section>
+      <div class="wrap">
+        <div class="card" style="text-align:center;">
+          <h2 style="margin-top:0;">Building Confident, Empowered Learners — One Step at a Time.</h2>
+          <p class="sub" style="margin-left:auto; margin-right:auto;">
+            Ready to get started? Schedule your Initial Confidence &amp; Skill Assessment and we’ll build a clear plan forward.
+          </p>
+          <a class="btn primary" href="PASTE_YOUR_BOOKING_LINK_HERE" target="_blank" rel="noopener">Schedule Your Assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div style="display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+        <div>© <span id="y"></span> Miss Arnold’s Tutoring Table</div>
+        <div class="small">Confidence-centered academic mentorship • Lexington, SC</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
