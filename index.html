@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Miss Arnold’s Tutoring Table</title>
-  <meta name="description" content="Miss Arnold’s Tutoring Table offers confidence-centered math and reading mentorship for grades 2–8 in Lexington, SC, plus ASVAB math support for adult learners. Personalized growth plans, progress tracking, and parent partnership." />
+  <meta name="description" content="Confidence-centered math and reading mentorship for grades 2–8 in Lexington, SC — plus ASVAB math support for adult learners. Personalized growth plans, progress tracking, and parent partnership." />
 
   <style>
     :root{
@@ -14,21 +14,31 @@
       --text: #1f2937;
       --muted: #4b5563;
       --line: #e7e2d9;
+
       --sage: #5f7663;
+      --sage-dark: #4e6b58;
+      --sage-soft: rgba(95,118,99,.10);
+
       --clay: #a07c63;
+      --clay-soft: rgba(160,124,99,.12);
+
       --shadow: 0 12px 30px rgba(17,24,39,.08);
+      --shadow-strong: 0 18px 45px rgba(17,24,39,.14);
+
       --radius: 18px;
       --max: 1100px;
     }
 
     *{ box-sizing: border-box; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
       color: var(--text);
-      background: radial-gradient(1200px 600px at 30% -10%, rgba(95,118,99,.12), transparent 60%),
-                  radial-gradient(900px 500px at 90% 0%, rgba(160,124,99,.10), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 600px at 30% -10%, rgba(95,118,99,.14), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(160,124,99,.12), transparent 55%),
+        var(--bg);
       line-height: 1.5;
     }
 
@@ -41,7 +51,7 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(10px);
-      background: rgba(251,250,247,.75);
+      background: rgba(251,250,247,.80);
       border-bottom: 1px solid var(--line);
     }
     .nav{
@@ -89,24 +99,31 @@
       border: 1px solid var(--line);
       background: var(--surface);
       box-shadow: 0 6px 16px rgba(17,24,39,.06);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
       cursor: pointer;
-      transition: transform .06s ease, box-shadow .15s ease;
+      transition: transform .08s ease, box-shadow .15s ease, border-color .15s ease;
       white-space: nowrap;
     }
-    .btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 22px rgba(17,24,39,.10); }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(17,24,39,.12);
+      border-color: rgba(95,118,99,.25);
+    }
     .btn.primary{
-      background: linear-gradient(135deg, var(--sage), #4e6b58);
+      background: linear-gradient(135deg, var(--sage), var(--sage-dark));
       color: #fff;
       border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 14px 30px rgba(95,118,99,.20);
+      box-shadow: 0 16px 36px rgba(95,118,99,.22);
     }
-    .btn.primary:hover{ box-shadow: 0 18px 36px rgba(95,118,99,.28); }
+    .btn.primary:hover{
+      box-shadow: 0 20px 42px rgba(95,118,99,.30);
+    }
 
     /* Sections */
     section{ padding: 64px 0; }
     .hero{ padding: 74px 0 48px; }
+
     .grid{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
@@ -118,17 +135,42 @@
       .navlinks{ display:none; }
     }
 
+    /* Colored section panels */
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.92));
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 6px);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .panel:before{
+      content:"";
+      position:absolute;
+      inset: 0;
+      background:
+        radial-gradient(520px 240px at 10% 0%, var(--sage-soft), transparent 60%),
+        radial-gradient(520px 240px at 95% 10%, var(--clay-soft), transparent 55%);
+      pointer-events:none;
+    }
+    .panel > *{ position: relative; }
+
     .card{
-      background: rgba(255,255,255,.88);
+      background: rgba(255,255,255,.92);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 22px;
       box-shadow: var(--shadow);
     }
+    .card.accent{
+      border-color: rgba(95,118,99,.20);
+      box-shadow: var(--shadow-strong);
+    }
 
     h1{
       font-size: clamp(32px, 3.8vw, 46px);
-      letter-spacing: -0.6px;
+      letter-spacing: -0.7px;
       line-height: 1.1;
       margin: 0 0 12px;
     }
@@ -136,28 +178,15 @@
       font-size: 16px;
       color: var(--muted);
       margin: 0 0 18px;
-      max-width: 65ch;
+      max-width: 70ch;
     }
-    .pillrow{ display:flex; gap:10px; flex-wrap: wrap; margin-top: 18px; }
-    .pill{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.7);
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .dot{ width: 8px; height: 8px; border-radius: 50%; background: var(--sage); display:inline-block; }
 
     .kicker{
       text-transform: uppercase;
       letter-spacing: 1.5px;
       font-size: 12px;
       color: var(--sage);
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 10px;
     }
 
@@ -166,15 +195,38 @@
       letter-spacing: -0.3px;
       margin: 0 0 10px;
     }
+
+    .underline{
+      display:inline-block;
+      padding-bottom: 6px;
+      border-bottom: 3px solid rgba(95,118,99,.18);
+    }
+
     p{ margin: 0 0 12px; color: var(--muted); }
+
+    .pillrow{ display:flex; gap:10px; flex-wrap: wrap; margin-top: 18px; }
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(95,118,99,.20);
+      background: rgba(255,255,255,.75);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .dot{ width: 8px; height: 8px; border-radius: 50%; background: var(--sage); display:inline-block; }
+
+    .small{ font-size: 13px; color: var(--muted); }
 
     .list{ margin: 14px 0 0; padding: 0; list-style: none; display:grid; gap: 10px; }
     .list li{
       display:flex; gap: 10px; align-items:flex-start;
       padding: 10px 12px;
       border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(95,118,99,.18);
+      background: rgba(255,255,255,.78);
     }
     .check{
       width: 20px; height: 20px;
@@ -197,21 +249,21 @@
       .steps{ grid-template-columns: 1fr; }
     }
     .step{
-      background: rgba(255,255,255,.85);
-      border: 1px solid var(--line);
+      background: rgba(255,255,255,.90);
+      border: 1px solid rgba(160,124,99,.20);
       border-radius: var(--radius);
       padding: 16px;
     }
-    .step strong{ display:block; margin-bottom: 6px; }
+    .step strong{ display:block; margin-bottom: 6px; color: var(--text); }
     .step .num{
       display:inline-flex;
       width: 34px; height: 34px;
       align-items:center; justify-content:center;
       border-radius: 10px;
       background: rgba(160,124,99,.14);
-      border: 1px solid rgba(160,124,99,.20);
+      border: 1px solid rgba(160,124,99,.22);
       color: var(--clay);
-      font-weight: 800;
+      font-weight: 900;
       margin-bottom: 10px;
     }
 
@@ -225,18 +277,31 @@
       .plans{ grid-template-columns: 1fr; }
     }
     .plan{
-      background: rgba(255,255,255,.9);
-      border: 1px solid var(--line);
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(95,118,99,.18);
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: 0 10px 22px rgba(17,24,39,.06);
+      position: relative;
+      overflow: hidden;
     }
+    .plan:before{
+      content:"";
+      position:absolute;
+      inset:-60px -60px auto auto;
+      width:160px; height:160px;
+      background: radial-gradient(circle, rgba(95,118,99,.14), transparent 65%);
+      transform: rotate(25deg);
+      pointer-events:none;
+    }
+    .plan > *{ position: relative; }
+
     .plan h3{ margin: 0 0 6px; font-size: 18px; }
-    .price{ font-size: 22px; font-weight: 800; color: var(--text); margin: 6px 0 10px; }
+    .price{ font-size: 22px; font-weight: 900; color: var(--text); margin: 6px 0 10px; }
     .tag{
       display:inline-block;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--sage);
       background: rgba(95,118,99,.12);
       border: 1px solid rgba(95,118,99,.18);
@@ -244,9 +309,35 @@
       border-radius: 999px;
       margin-bottom: 10px;
     }
-    .small{ font-size: 13px; color: var(--muted); }
 
     .divider{ height: 1px; background: var(--line); margin: 18px 0; }
+
+    /* Photo styling */
+    .photoWrap{
+      display:flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .photo{
+      width: 100%;
+      max-width: 360px;
+      border-radius: 22px;
+      border: 4px solid #fff;
+      box-shadow: 0 22px 50px rgba(17,24,39,.18);
+      display:block;
+      object-fit: cover;
+    }
+    .photoNote{
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(95,118,99,.10);
+      border: 1px solid rgba(95,118,99,.18);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
 
     footer{
       padding: 28px 0 44px;
@@ -277,21 +368,22 @@
   </header>
 
   <main>
-    <!-- Top section -->
+    <!-- Hero -->
     <section class="hero">
       <div class="wrap">
         <div class="grid">
-          <div>
+          <!-- Left column -->
+          <div class="panel">
             <div class="kicker">Confidence-centered academic mentorship</div>
-            <h1>Confidence-Centered Math &amp; Reading Mentorship</h1>
+            <h1>Confidence-Centered <span class="underline">Math &amp; Reading</span> Mentorship</h1>
             <p class="sub">
               Personalized support for students in grades 2–8 in Lexington, SC — plus ASVAB math support for adult learners.
               Structured sessions, clear growth plans, and steady confidence-building that helps learners feel capable again.
             </p>
-            <p class="small">In-person &amp; online • Homeschool-friendly • Parent partnership included</p>
+            <p class="small"><strong>In-person &amp; online</strong> • Homeschool-friendly • Parent partnership included</p>
 
             <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px;">
-              <a class="btn" href="#plans">View Mentorship Plans</a>
+              <a class="btn primary" href="#plans">View Mentorship Plans</a>
               <a class="btn" href="#how">How It Works</a>
             </div>
 
@@ -303,36 +395,33 @@
 
             <p class="small" style="margin-top:10px;">Serving families in Lexington, SC and surrounding areas.</p>
           </div>
-<div>
-          <div class="card">
-            <div class="kicker">Start here</div>
-<img src="./claire-arnold.png"
-alt="Claire Arnold - Miss Arnold’s Tutoring Table"
-style="
-width:100%;
-max-width:320px;
-border-radius:22px;
-margin-bottom:18px;
-border:4px solid #ffffff;
-box-shadow:0 20px 45px rgba(0,0,0,0.18);
-">
-<p class="small">Hi, I’m Claire — founder of Miss Arnold’s Tutoring Table.</p>
-            <h2 style="margin-top:0;">Initial Confidence &amp; Skill Assessment</h2>
-            <p>
-              A focused session to evaluate math and reading skills, identify confidence barriers,
-              and create a personalized growth plan for your child.
-            </p>
-            <div class="divider"></div>
-            <p class="small"><strong>Investment:</strong> $45 (one-time)</p>
-            <p class="small"><strong>Next step:</strong> Book your assessment using the button in the bottom corner.</p>
-            <div class="divider"></div>
-            <p class="small">
-              <strong>Great fit for students who:</strong><br>
-              • Feel overwhelmed by math or reading<br>
-              • Need structure and accountability<br>
-              • Have lost confidence in school<br>
-              • Would benefit from calm, personalized support
-            </p>
+
+          <!-- Right column -->
+          <div>
+            <div class="photoWrap">
+              <img class="photo" src="./claire-arnold.png" alt="Claire Arnold - Miss Arnold’s Tutoring Table">
+              <div class="photoNote">Hi, I’m Claire — founder of Miss Arnold’s Tutoring Table.</div>
+            </div>
+
+            <div class="card accent">
+              <div class="kicker">Start here</div>
+              <h2 style="margin-top:0;">Initial Confidence &amp; Skill Assessment</h2>
+              <p>
+                A focused session to evaluate math and reading skills, identify confidence barriers,
+                and create a personalized growth plan for your child.
+              </p>
+              <div class="divider"></div>
+              <p class="small"><strong>Investment:</strong> $45 (one-time)</p>
+              <p class="small"><strong>Next step:</strong> Use the <strong>Book Assessment</strong> button in the bottom corner.</p>
+              <div class="divider"></div>
+              <p class="small">
+                <strong>Great fit for students who:</strong><br>
+                • Feel overwhelmed by math or reading<br>
+                • Need structure and accountability<br>
+                • Have lost confidence in school<br>
+                • Would benefit from calm, personalized support
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -341,7 +430,7 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
     <!-- Invitation -->
     <section>
       <div class="wrap">
-        <div class="card">
+        <div class="panel">
           <h2>When School Feels Overwhelming, You Don’t Have to Navigate It Alone.</h2>
           <p>
             If homework has become stressful, confidence feels low, or your child simply needs structured academic support,
@@ -362,7 +451,7 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
     <section>
       <div class="wrap">
         <div class="grid">
-          <div class="card">
+          <div class="panel">
             <div class="kicker">Who I work with</div>
             <h2>Support for Students &amp; Adult Learners</h2>
             <p class="small">
@@ -372,12 +461,10 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
               • Students who need structure, accountability, and confidence support
             </p>
             <div class="divider"></div>
-            <p class="small">
-              <strong>Serving:</strong> Lexington, South Carolina + surrounding areas (in-person &amp; online).
-            </p>
+            <p class="small"><strong>Serving:</strong> Lexington, South Carolina + surrounding areas (in-person &amp; online).</p>
           </div>
 
-          <div class="card">
+          <div class="panel">
             <div class="kicker">Subjects offered</div>
             <h2>Math, Reading &amp; Learning Skills</h2>
             <p class="small">
@@ -395,7 +482,7 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
     <section id="method">
       <div class="wrap">
         <div class="grid">
-          <div>
+          <div class="panel">
             <div class="kicker">The Build &amp; Believe Method</div>
             <h2>Strengthening Skills. Growing Confidence.</h2>
             <p>
@@ -405,7 +492,7 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
             </p>
           </div>
 
-          <div>
+          <div class="panel">
             <ul class="list">
               <li><span class="check">✓</span><span><strong>Personalized Academic Growth Plans</strong><br><span class="small">Clear goals, focused skill work, and a plan that fits your child.</span></span></li>
               <li><span class="check">✓</span><span><strong>Confidence-Based Progress Tracking</strong><br><span class="small">Track skill mastery and growing independence over time.</span></span></li>
@@ -420,7 +507,7 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
     <!-- Advocacy -->
     <section>
       <div class="wrap">
-        <div class="card">
+        <div class="panel">
           <div class="kicker">Family advocacy &amp; support</div>
           <h2>You’re Not Doing This Alone</h2>
           <p>
@@ -441,7 +528,7 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
     <!-- How it works -->
     <section id="how">
       <div class="wrap">
-        <div class="card">
+        <div class="panel">
           <div class="kicker">Simple process</div>
           <h2>How It Works</h2>
           <div class="steps">
@@ -468,7 +555,7 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
           </div>
 
           <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn" href="#plans">See Plans</a>
+            <a class="btn primary" href="#plans">See Plans</a>
           </div>
           <p class="small" style="margin-top:12px;">
             Ready? Use the <strong>Book Assessment</strong> button in the bottom corner to schedule.
@@ -480,15 +567,11 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
     <!-- Availability -->
     <section>
       <div class="wrap">
-        <div class="card" style="text-align:center;">
+        <div class="panel" style="text-align:center;">
           <div class="kicker">Availability</div>
           <h2>Limited Weekly Openings</h2>
-          <p>
-            To keep support personalized and consistent, I work with a limited number of students each week.
-          </p>
-          <p class="small">
-            If you’re considering tutoring, booking an assessment soon is recommended.
-          </p>
+          <p>To keep support personalized and consistent, I work with a limited number of students each week.</p>
+          <p class="small">If you’re considering tutoring, booking an assessment soon is recommended.</p>
         </div>
       </div>
     </section>
@@ -532,7 +615,7 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
           </div>
         </div>
 
-        <div class="card" style="margin-top: 14px;">
+        <div class="panel" style="margin-top: 14px;">
           <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 18px;">
             <div>
               <h3 style="margin:0 0 8px;">Initial Confidence &amp; Skill Assessment</h3>
@@ -552,22 +635,14 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
     <!-- Testimonials -->
     <section>
       <div class="wrap">
-        <div class="card">
+        <div class="panel">
           <div class="kicker">Parent feedback</div>
           <h2>What Families Notice</h2>
-          <p class="small">
-            “Homework isn’t a fight anymore — my child is more confident and actually tries first.”
-          </p>
-          <p class="small">
-            “Claire explains things in a way that finally makes sense. We’re seeing steady growth.”
-          </p>
-          <p class="small">
-            “The progress updates help me understand what’s improving and what we’re working on next.”
-          </p>
+          <p class="small">“Homework isn’t a fight anymore — my child is more confident and actually tries first.”</p>
+          <p class="small">“Claire explains things in a way that finally makes sense. We’re seeing steady growth.”</p>
+          <p class="small">“The progress updates help me understand what’s improving and what we’re working on next.”</p>
           <div class="divider"></div>
-          <p class="small">
-            Have feedback to share? Send a quick note — I love celebrating growth with families.
-          </p>
+          <p class="small">Have feedback to share? Send a quick note — I love celebrating growth with families.</p>
         </div>
       </div>
     </section>
@@ -575,7 +650,7 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
     <!-- About -->
     <section id="about">
       <div class="wrap">
-        <div class="card">
+        <div class="panel">
           <div class="kicker">About</div>
           <h2>About Miss Arnold</h2>
           <p>
@@ -597,14 +672,12 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
     <!-- Final CTA -->
     <section>
       <div class="wrap">
-        <div class="card" style="text-align:center;">
+        <div class="panel" style="text-align:center;">
           <h2 style="margin-top:0;">Ready to Get Started?</h2>
           <p class="sub" style="margin-left:auto; margin-right:auto;">
             Book your Initial Confidence &amp; Skill Assessment and we’ll build a clear plan forward — skills, confidence, and support.
           </p>
-          <p class="small">
-            Use the <strong>Book Assessment</strong> button in the bottom corner to schedule.
-          </p>
+          <p class="small">Use the <strong>Book Assessment</strong> button in the bottom corner to schedule.</p>
         </div>
       </div>
     </section>
@@ -641,9 +714,3 @@ box-shadow:0 20px 45px rgba(0,0,0,0.18);
 
 </body>
 </html>
-
-
-
-
-
-
