@@ -173,9 +173,14 @@
       box-shadow: var(--shadow);
     }
     .card.accent{
-      border-color: rgba(95,118,99,.22);
-      box-shadow: var(--shadow-strong);
-    }
+  border: 2px solid rgba(95,118,99,.35);
+  background: linear-gradient(
+    180deg,
+    rgba(95,118,99,.08),
+    rgba(255,255,255,.95)
+  );
+  box-shadow: 0 20px 50px rgba(95,118,99,.18);
+}
     .card.clay{
       border-color: rgba(160,124,99,.22);
       box-shadow: var(--shadow);
@@ -501,7 +506,7 @@
 
         <!-- Step 1 (LEFT COLUMN under buttons) -->
         <div class="card accent" style="margin-top:16px;">
-          <div class="kicker">Start here</div>
+          <div class="kicker">Step 1 • Start Here</div>
           <h2 style="margin-top:0;"><span class="u clay">Step 1:</span> Book Your Initial Confidence &amp; Skill Assessment</h2>
           <p>
             Every student begins with an Initial Assessment. This session helps me understand your child’s current skills,
@@ -515,7 +520,9 @@
             <li><span class="check">✓</span><span><strong>Personalized plan recommendation</strong><br><span class="small">Clear next steps and the best-fit plan.</span></span></li>
           </ul>
           <div class="divider"></div>
-          <p class="small"><strong>Investment:</strong> $45 (one-time)</p>
+         <p style="font-size:20px; font-weight:700; color:var(--sage); margin:10px 0;">
+  Investment: $45 <span style="font-size:15px; font-weight:500; color:var(--muted);">(one-time)</span>
+</p>
           <p class="small" style="margin-bottom:0;">
             Use the <strong>Book Assessment</strong> button in the bottom corner to schedule.
             <br><strong>Limited weekly openings</strong> are kept to ensure personalized support (waitlist available when full).
@@ -823,6 +830,7 @@
 
 </body>
 </html>
+
 
 
 
