@@ -812,21 +812,23 @@
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 
-  <!-- Calendly badge widget begin -->
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <script type="text/javascript">
-    window.onload = function () {
-      Calendly.initBadgeWidget({
-        url: 'https://calendly.com/cdarnold07/initial-assessment?background_color=fbfaf7&text_color=1f2937&primary_color=5f7663',
-        text: "Book Assessment",
-        color: '#5f7663',
-        textColor: '#ffffff',
-        branding: false
-      });
-    };
-  </script>
-  <!-- Calendly badge widget end -->
+  <a href="https://calendar.app.google/hdSEArxKEsjLeWVJA" 
+target="_blank"
+style="
+position:fixed;
+bottom:20px;
+right:20px;
+background-color:#5f7663;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+z-index:1000;
+">
+Book Assessment
+</a>
 
 </body>
 </html>
