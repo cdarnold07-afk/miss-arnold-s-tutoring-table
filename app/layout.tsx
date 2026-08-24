@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     icon: "/miss-arnold-s-tutoring-table/favicon.svg",
     shortcut: "/miss-arnold-s-tutoring-table/favicon.svg",
   },
+  verification: {
+    google: "xWsx3TYH5_RwvtsU_Ki96HGd_ADdp2DWepING6X1Img",
+  },
 };
 
 export default function RootLayout({
