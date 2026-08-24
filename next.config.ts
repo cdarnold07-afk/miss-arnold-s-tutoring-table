@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  basePath: "/miss-arnold-s-tutoring-table",
+  assetPrefix: "/miss-arnold-s-tutoring-table",
+  trailingSlash: true,
+  images: { unoptimized: true },
+  typescript: { ignoreBuildErrors: true },
 };
 
 export default nextConfig;
