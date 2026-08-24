@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
   assetPrefix: "/miss-arnold-s-tutoring-table",
   trailingSlash: true,
   images: { unoptimized: true },
-  typescript: { ignoreBuildErrors: true },
 };
 
 export default nextConfig;
